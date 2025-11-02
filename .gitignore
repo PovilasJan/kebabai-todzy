@@ -6,3 +6,5 @@ backend/obj/
 *.vs
 .vscode/
 /.idea/
+.next/
+out/

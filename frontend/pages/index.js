@@ -1,7 +1,17 @@
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 export default function Home() {
+  const router = useRouter()
+
+  const handleLogout = (e) => {
+    e.preventDefault()
+    alert('You have been logged out!')
+    // Optionally, clear user data or auth tokens here
+    // localStorage.removeItem('user')
+    router.push('/') // stays on main page (this just reloads it)
+  }
+
   return (
     <main style={{ padding: 20 }}>
       <h1>Pagrindinis langas</h1>
@@ -18,7 +28,9 @@ export default function Home() {
         <li><Link href="/account">Paskyros langas</Link></li>
         <li><Link href="/orders/review">Užsakymų peržiūra</Link></li>
         <li><Link href="/login">Prisijungimo langas</Link></li>
-        <li><Link href="/logout">Atsijungimo langas</Link></li>
+        <li>
+          <a href="#" onClick={handleLogout}>Atsijungimo langas</a>
+        </li>
       </ul>
     </main>
   )
